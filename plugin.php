@@ -3,9 +3,9 @@
 Plugin Name: Share Files JG
 Plugin URI: http://www.mattytemple.com.org/projects/yourls-share-files/
 Description: (JG) A simple plugin that allows you to easily share files and create text if PDF, word document
-Version: 2.0
+Version: 2.1
 Author: Matt Temple & JG
-Author URI: http://www.mattytemple.com/jgwill.com
+Author URI: http://www.mattytemple.com/, http://jgwill.com
 */
 
 // Register our plugin admin page
@@ -83,7 +83,8 @@ $matt_jg_final_file_name_text = $matt_jg_safe_filename.'.'.$matt_jg_extension . 
 			$matt_jg_custom_keyword = $_POST['custom_keyword'];
 			$matt_jg_short_url = yourls_add_new_link($matt_jg_url.$matt_jg_final_file_name, $matt_jg_custom_keyword, $matt_jg_filename);
 			
-			//todo jg add logic to create a link for the text file.			
+			//Raw Text Link version
+			//example http://afelia.jgwill.com/rn/msc/testing/integration-test/txt		
 			$matt_jg_short_url_text =  '';
 			if ($matt_jg_extension == 'pdf') {
 					$matt_jg_custom_keyword_text = $_POST['custom_keyword'] . '/txt';
@@ -99,7 +100,7 @@ $matt_jg_final_file_name_text = $matt_jg_safe_filename.'.'.$matt_jg_extension . 
 			
 //echo if PDF extension			
 			if ($matt_jg_extension == 'pdf') {
-			echo 'Additional Text file created and was saved successfully at <a target="_blank"  href="'
+			echo '<h3>PDF Detected</h3>Additional Text file created and was saved successfully at <a target="_blank"  href="'
 									. $matt_jg_short_url_text['shorturl'] . '">' 
 									. $matt_jg_short_url_text['shorturl'] . '</a>';
 			}
