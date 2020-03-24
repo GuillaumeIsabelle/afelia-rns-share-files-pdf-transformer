@@ -58,6 +58,16 @@ $matt_rnjg_final_file_name_text = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extens
 
 	$matt_rnjg_final_file_name = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extension;
 
+
+//
+   //Init var @TODO
+        $matt_jg_path_md ='';
+        $matt_jg_path_notes_md ='';
+        $matt_jg_final_file_name_md= '';
+        $matt_jg_final_file_name_notes_md='';
+
+
+
 	//add   -01... if file exist...
 	while(file_exists($matt_rnjg_path)) {
 		$matt_rnjg_path = $matt_rnjg_uploaddir.$matt_rnjg_safe_filename.'-'.$matt_rnjg_count.'.'.$matt_rnjg_extension;
@@ -77,7 +87,28 @@ $matt_rnjg_final_file_name_text = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extens
 		
 		//create the TEXT if extension is PDF
 		if ($matt_rnjg_extension == 'pdf') {
+			touch($matt_jg_path_md);
+
 			shell_exec('/usr/bin/pdftotext ' . $matt_rnjg_path . ' ' . $matt_rnjg_path_text);
+
+			//testing if the data is right
+                        echo '<hr>' . $matt_jg_path_text . ' ' . $matt_jg_path_md . ' <hr>';
+                        echo '<hr>' .  $matt_jg_final_file_name_notes_md. ' '   . ' <hr>';
+			
+
+
+
+                        shell_exec('cp ' .  $matt_jg_path_text . ' ' . $matt_jg_path_md); //copy the text into an MD file
+                        // 200324 Trying to create the .notes.md and .md that will go with the PDF
+
+                        //shell_exec('echo "# ">> '. $matt_jg_path_notes_md );
+                        shell_exec('echo "# ">> '. $matt_jg_final_file_name_notes_md );
+
+                        //Maybe update GIT
+                        //shell_exec('git pull ;git add *pdf ; git add *.txt ; git add *.md ; git commit . -m "add: '.  $matt_jg_path_text . '" ; git push ');
+
+
+
 			
 	} //end if ext was pdf
 
