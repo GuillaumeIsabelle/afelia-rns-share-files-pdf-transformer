@@ -117,8 +117,8 @@ $matt_rnjg_final_file_name_text = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extens
 			$matt_rnjg_custom_keyword = $_POST['custom_keyword'];
 
 			//@STCGoal Generate a metadata for the file being created
-			$metafile =  $matt_rnjg_path . '.meta.txt';
-			shell_exec('echo "mkns=' .  $matt_rnjg_custom_keyword  . '" > ' .  $metafile );
+		//	$metafile =  $matt_rnjg_path . '.meta.txt';
+		//	shell_exec('echo "mkns=' .  $matt_rnjg_custom_keyword  . '" > ' .  $metafile );
 
 			$metafilejson =  $matt_rnjg_path . '.meta.json';
 			$arr = array('mkns'=> $matt_rnjg_custom_keyword);
