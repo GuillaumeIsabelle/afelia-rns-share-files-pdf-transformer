@@ -60,11 +60,12 @@ $matt_rnjg_final_file_name_text = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extens
 
 
 //
-   //Init var @TODO
-        $matt_jg_path_md ='';
-        $matt_jg_path_notes_md ='';
-        $matt_jg_final_file_name_md= '';
-        $matt_jg_final_file_name_notes_md='';
+//Init var @TODO
+	$tmp_base_name = $matt_rnjg_uploaddir.$matt_rnjg_safe_filename.'.'.$matt_rnjg_extension . '.' ;
+        $matt_jg_path_md = $tmp_base_name . 'md';
+        $matt_jg_path_notes_md =$tmp_base_name . 'notes.md';
+     //   $matt_jg_final_file_name_md= '.md';
+      //  $matt_jg_final_file_name_notes_md='.notes.md';
 
 
 
@@ -92,7 +93,7 @@ $matt_rnjg_final_file_name_text = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extens
 			shell_exec('/usr/bin/pdftotext ' . $matt_rnjg_path . ' ' . $matt_rnjg_path_text);
 
 			//testing if the data is right
-                        echo '<hr>' . $matt_jg_path_text . ' ' . $matt_jg_path_md . ' <hr>';
+                        echo '<hr>' . $matt_jg_path_text . '<br> ' . $matt_jg_path_md . ' <hr>';
                         echo '<hr>' .  $matt_jg_final_file_name_notes_md. ' '   . ' <hr>';
 			
 
@@ -101,8 +102,8 @@ $matt_rnjg_final_file_name_text = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extens
                         shell_exec('cp ' .  $matt_jg_path_text . ' ' . $matt_jg_path_md); //copy the text into an MD file
                         // 200324 Trying to create the .notes.md and .md that will go with the PDF
 
-                        //shell_exec('echo "# ">> '. $matt_jg_path_notes_md );
-                        shell_exec('echo "# ">> '. $matt_jg_final_file_name_notes_md );
+                        shell_exec('echo "# ">> '. $matt_jg_path_notes_md );
+                       // shell_exec('echo "# ">> '. $matt_jg_final_file_name_notes_md );
 
                         //Maybe update GIT
                         //shell_exec('git pull ;git add *pdf ; git add *.txt ; git add *.md ; git commit . -m "add: '.  $matt_jg_path_text . '" ; git push ');
@@ -113,7 +114,12 @@ $matt_rnjg_final_file_name_text = $matt_rnjg_safe_filename.'.'.$matt_rnjg_extens
 	} //end if ext was pdf
 
 		if(isset($_POST['custom_keyword']) && $_POST['custom_keyword'] != '') {
-			 $matt_rnjg_custom_keyword = $_POST['custom_keyword'];
+			$matt_rnjg_custom_keyword = $_POST['custom_keyword'];
+
+			//@STCGoal Generate a metadata for the file being created
+
+
+
 			// $matt_rnjg_short_url = yourls_add_new_link($matt_rnjg_url.$matt_rnjg_final_file_name, $matt_rnjg_custom_keyword, $matt_rnjg_filename);
 			
 			//todo jg add logic to create a link for the text file.			
